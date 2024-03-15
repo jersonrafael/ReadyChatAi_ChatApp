@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="flex justify-center items-center h-screen">
+        <div class="bg-indigo-400 px-4 py-12">
+            <h2>Login</h2>
+            <span class="text-red-600">{{message}}</span>
+            <form action="" method="post" role="form">
+                {%csrf_token%}
+
+                <div class="mt-4">
+                    <label for="" class="block text-gray-800"><i>Username</i></label>
+                    {{form.username}}
+                </div>
+
+                <div class="mt-4">
+                    <label for="" class="block text-gray-800"><i>Password</i></label>
+                    {{form.password}}
+                </div>
+
+                <button type="submit" name="login" class="mt-4">Login</button>
+            </form>
+            
+            <div class="mt-4">
+                <a href="/chat/start/" >Not Have Account?</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

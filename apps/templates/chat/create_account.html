@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | Create Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="flex justify-center items-center w-screen h-screen">
+<div>
+
+    <div class="bg-indigo-400 px-10 py-12">
+        <h2>Create Account</h2>
+        <span>{{message}}</span>
+        <form action="" method="post">
+            {%csrf_token%}
+
+            <div class="mt-4">
+                <label for="" class="block text-gray-800"><i>Username</i></label>
+                {{form.username}}
+                <!-- <span>{{form.username.errors}}</span> -->
+            </div>
+
+            <div class="mt-4">
+                <label for="" class="block text-gray-800"><i>Email</i></label>
+                {{form.email}}
+                <!-- <span>{{form.email.errors}}</span> -->
+            </div>
+
+            <div class="mt-4">
+                <label for="" class="block text-gray-800"><i>Password</i></label>
+                {{form.password1}}
+                <!-- <span>{{form.password1.errors}}</span> -->
+            </div>
+
+            <div class="mt-4">
+                <label for="" class="block text-gray-800"><i>Repeat</i> your password</label>
+                {{form.password2}}
+                <!-- <span>{{form.password2.errors}}</span> -->
+            </div>
+
+            <button type="submit" class="mt-4">Create Account</button>
+        </form>
+    </div>
+
+    <a href="/chat/login/">Login</a>
+</div>
+</div>
+</body>
+</html>

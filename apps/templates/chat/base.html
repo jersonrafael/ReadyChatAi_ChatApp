@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>
+        Chat |
+        {%block title%}
+
+        {%endblock%}
+    </title>
+</head>
+
+<body class="overflow-hidden font-mono	">
+    <header class="py-4 bg-indigo-400">
+        <ul class="flex justify-between items-center">
+            <li class="mx-4">
+                <h2> {{user|upper}} </h2>
+            </li>
+
+            <div>
+                <li class="inline-block">
+                    <a href="/chat/message/send/" class="py-2 hover:border-b border-white">New Message</a>
+                </li>
+
+                <li class="mx-2 inline-block">
+                    <a href="/chat/logout/" class="py-2 hover:border-b border-white">LogOut</a>
+                </li>
+            </div>
+        </ul>
+    </header>
+    <div class="flex">
+
+        <aside class="px-2 w-1/4 h-screen overflow-y-auto inline-block bg-indigo-300">
+            <ul class="mb-10">
+                
+                <h2>My messages</h2>
+                {% for message in local_messages%}
+                <li class="px-2 py-2">
+                    <a href="/chat/my/message/{{message.id}}/">
+                        <h2> <i>to: {{message.to}}</i> </h2>
+                        <p class="text-slate-600"> <i>{{message.text|truncatechars:20}}</i> </p>
+                    </a>
+                </li>
+                {%endfor%}
+                
+                <h2 class="my-4">Other Messages</h2>
+
+                {% for message in messages%}
+                <li class="px-2 py-2">
+                    <a href="/chat/message/{{message.id}}/">
+                        <h2> <i>{{message.sender_name}}</i> </h2>
+                        <p class="text-slate-600"> <i>{{message.message_text|truncatechars:20}}</i> </p>
+                    </a>
+                </li>
+                {%endfor%}
+            </ul>
+        </aside>
+        {% block contend %}
+
+        {% endblock contend %}
+    </div>
+</body>
+</html>

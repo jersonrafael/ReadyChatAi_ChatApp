@@ -1,0 +1,36 @@
+{% extends "chat/base.html" %}
+
+{% block title %}
+{{message.sender_name}} 
+{% endblock title %}
+
+
+{% block contend %}
+<div class="w-full h-screen overflow-y-auto">
+    <header class="py-2">
+        <ul class="flex justify-between items-center">
+            <li class="mx-2">
+                <a href="/chat/messages/">
+                    <
+                </a>
+            </li>
+
+            <li class="mx-2">
+                <p>
+                    {%if message.sender_name == 'unknown' %}
+                        <h2> +{{message.sender_number}} </h2>
+                    {%else%}
+                        <h2> {{message.sender_name}} </h2>
+                    {%endif%}
+                </p>
+            </li>
+        </ul>
+    </header>
+<section class="flex h-screen items-end">
+    <h2 class="text-xl mx-8 mb-24 bg-indigo-400 py-2 px-2 rounded-xl">
+        <i>{{message.message_text}}</i>
+        <i class="block text-sm"> {{message.message_date|truncatechars:11}} </i>
+    </h2>
+</section>
+</div>
+{% endblock contend %}
